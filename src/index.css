@@ -1,0 +1,18 @@
+body{
+  background-color: #415a77;
+}
+.footer{
+  position:absolute;
+  bottom: 0;
+  right:42.5%;
+  color:#fff
+}
+.fa-heart-o{
+  color:#fff;
+}
+@media(max-width:700px){
+  .footer{
+    right:32%;
+    font-size:14px;
+  }
+}
