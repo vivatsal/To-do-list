@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry("https://registry.hub.docker.com", "${DOCKERHUB_CREDENTIAL_ID}") {
-                        def app = docker.build("${IMAGE_NAME}:${env.BUILD_NUMBER}", ".")
+                        def app = docker.build("${IMAGE_NAME}:${BUILD_NUMBER}", ".")
                         app.push()
                     }
                 }
@@ -29,7 +29,7 @@ pipeline {
                 sh "docker stop ${CONTAINER_NAME} || true"
                 sh "docker rm ${CONTAINER_NAME} || true"
                 sh "docker pull ${IMAGE_NAME}:${env.BUILD_NUMBER}"
-                sh "docker run -d --name ${CONTAINER_NAME} -p ${PORT}:80 ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                sh "docker run -d --name ${CONTAINER_NAME} -p ${PORT}:80 ${IMAGE_NAME}:${BUILD_NUMBER}"
             }
         }
     }
